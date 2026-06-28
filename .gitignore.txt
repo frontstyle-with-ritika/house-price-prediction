@@ -1,9 +1,0 @@
-__pycache__/
-*.pyc
-.env
-node_modules/
-build/
-.ipynb_checkpoints/
-.virtual_documents/
-anaconda_projects/
-*.pkl
