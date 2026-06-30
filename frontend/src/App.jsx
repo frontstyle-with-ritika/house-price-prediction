@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import InsightsPanel from './InsightsPanel';
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 const Field = ({ label, children, hint }) => (
@@ -464,7 +465,14 @@ export default function App() {
   if (showSummary) return (
     <div className="app">
       <AppHeader liveEstimate={liveEstimate} history={history} onHistory={() => setPage('history')} onHome={() => setPage('landing')} />
-      {result && <ResultBanner result={result} onClose={() => setResult(null)} />}
+      {result && (
+        <>
+          <ResultBanner result={result} onClose={() => setResult(null)} />
+          <div className="form-wrapper">
+            <InsightsPanel predictedPrice={result} neighborhood={form.Neighborhood} />
+          </div>
+        </>
+      )}
       {error && <ErrorBanner error={error} onClose={() => setError(null)} />}
       <div className="form-wrapper">
         <SummaryView form={form} onBack={() => setShowSummary(false)} onSubmit={handleSubmit} loading={loading} />
@@ -475,7 +483,14 @@ export default function App() {
   return (
     <div className="app">
       <AppHeader liveEstimate={liveEstimate} history={history} onHistory={() => setPage('history')} onHome={() => setPage('landing')} />
-      {result && <ResultBanner result={result} onClose={() => setResult(null)} />}
+      {result && (
+        <>
+          <ResultBanner result={result} onClose={() => setResult(null)} />
+          <div className="form-wrapper">
+            <InsightsPanel predictedPrice={result} neighborhood={form.Neighborhood} />
+          </div>
+        </>
+      )}
       {error && <ErrorBanner error={error} onClose={() => setError(null)} />}
 
       {/* Progress bar */}
